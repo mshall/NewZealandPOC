@@ -20,7 +20,7 @@ public class ShopsController {
 	ShopsService service;
 
 	@RequestMapping(value = "shops", produces = "application/json; charset=UTF-8", method = RequestMethod.GET)
-	public ResponseEntity<ShopsResponse> findShopsByPostCode(@RequestParam(value="town", required = true) String town,
+	public ResponseEntity<ShopsResponse> findShopsByPostCode(@RequestParam(value="town", required = false) String town,
 			@RequestParam(value = "postcode", required = false) String postcode) {
 		ShopsResponse shops = service.getShopsByTown(town);
 		return new ResponseEntity<ShopsResponse>(shops, HttpStatus.OK);

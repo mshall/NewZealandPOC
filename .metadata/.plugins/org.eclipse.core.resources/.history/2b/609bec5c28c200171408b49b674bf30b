@@ -21,7 +21,7 @@ public class ShopsServiceImpl implements ShopsService {
 	HttpClient client;
 
 	@Override
-	public ShopsResponse getShopsByTown(String town) {
+	public ShopsResponse getShopsByPostcodeAndTown(String town) {
 		ShopsResponse response = new ShopsResponse();
 		// restTemplate = new RestTemplate();
 

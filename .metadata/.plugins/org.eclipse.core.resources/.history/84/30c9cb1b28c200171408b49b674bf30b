@@ -13,7 +13,13 @@ public class HttpClient {
 	RestTemplate restTemplate = new RestTemplate();
 
 	public <T> T callAPI(Class<T> clazz, String town) {
-		url = url + "?town=" + town;
+		if (town == null) {
+			url = url + "?postcode=" + postcode;
+		} else if (postcode == null) {
+			url = url + "?town=" + town;
+		} else {
+			url = url + "?town=" + town + "&postcode=" + postcode;
+		}
 
 		T response = (T) restTemplate.getForObject(url, clazz);
 		if (response != null) {

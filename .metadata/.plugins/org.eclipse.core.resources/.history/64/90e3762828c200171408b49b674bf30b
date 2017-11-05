@@ -21,18 +21,18 @@ public class ShopsServiceImpl implements ShopsService {
 	HttpClient client;
 
 	@Override
-	public ShopsResponse getShopsByTown(String town) {
+	public ShopsResponse getShopsByPostcodeAndTown(String postcode, String town) {
 		ShopsResponse response = new ShopsResponse();
 		// restTemplate = new RestTemplate();
 
 		// Nothing is returned from the DB, now call the backend and cache into
 		// DB
-		Shops shops = repository.findByAddress_TownIgnoreCase(town);
+		Shops shops = repository.findByAddress_PostcodeOrAddress_TownIgnoreCase(postcode, town);
 		if (shops != null) {
 			dozerMapper.map(shops, response);
 		} else {// Check the Backend stub
 			// HttpClient client = new HttpClient();
-			response = client.callAPI(ShopsResponse.class, town);
+			response = client.callAPI(ShopsResponse.class, town, postcode);
 			// Now cache into the database
 			Shops shop = new Shops();
 			dozerMapper.map(response, shop);

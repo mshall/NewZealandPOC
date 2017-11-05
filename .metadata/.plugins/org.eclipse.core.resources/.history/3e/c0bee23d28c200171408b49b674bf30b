@@ -8,6 +8,5 @@ import com.cubeshub.domain.Shops;
 public interface ShopsRepository extends MongoRepository<Shops, String> {
 
 	public Shops findByAddress_PostcodeOrAddress_TownIgnoreCase(String postcode,String town);
-	public Shops findByAddress_TownIgnoreCase(String town);
 	
 }
