@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;spring-cloud-config-server&apos; to &apos;ConfigServer&apos;" description="Rename resource &apos;spring-cloud-config-server&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/spring-cloud-config-server" name="ConfigServer" stamp="1509024014033" updateReferences="true"/>
+</session>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<!-- <mapping map-id="shops">
+		<class-a>com.cubeshub.domain.Shops</class-a>
+		<class-b>com.cubeshub.dto.ShopsResponse</class-b>
+		<field>
+			<a>name</a>
+			<b>name</b>
+		</field>
+		<field>
+			<a>description</a>
+			<b>description</b>
+		</field>
+		<field>
+			<a>type</a>
+			<b>type</b>
+		</field>
+		<field>
+			<a>status</a>
+			<b>status</b>
+		</field>
+		<field>
+			<a>ownership</a>
+			<b>ownership</b>
+		</field>
+		<field>
+			<a>email</a>
+			<b>email</b>
+		</field>
+		<field>
+			<a>telephone</a>
+			<b>telephone</b>
+		</field>
+		<field>
+			<a>address</a>
+			<b>address</b>
+		</field>
+		<field>
+			<a>opening</a>
+			<b>opening</b>
+		</field>
+		<field>
+			<a>services</a>
+			<b>services</b>
+		</field>
+	</mapping> -->
+</mappings>
