@@ -5,6 +5,7 @@ pipeline {
       stage('Spring-Config Java Build') {
         steps {
           notifyStarted("Spring-Config Java Build")
+          /*
           echo "java build for Spring-Config"
           sh"""
             cd Spring-Config/ConfigServer
@@ -20,6 +21,7 @@ pipeline {
             failure{
               notifyFailed("Java Build")
                }
+               */
           }
 
       }

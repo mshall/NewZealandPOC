@@ -7,7 +7,7 @@ WORKDIR /home/demo
 EXPOSE 9090
 USER demo
 RUN pwd
-RUN ls -l	
+RUN ls -ld	
 RUN mkdir /ConfigServer
 VOLUME /tmp
 ADD ConfigServer-0.0.1-SNAPSHOT.jar /ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar
