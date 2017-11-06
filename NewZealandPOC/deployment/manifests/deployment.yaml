@@ -4,7 +4,7 @@ metadata:
   name: nz-poc-server-deploy
   namespace: cicd-test
   labels:
-    app: nz-poc-deploy
+    app: nz-poc-server-deploy
     env: nz-poc
 spec:
   replicas: 1

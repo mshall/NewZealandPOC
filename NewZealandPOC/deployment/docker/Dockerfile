@@ -7,7 +7,5 @@ WORKDIR /home/demo
 EXPOSE 8080
 USER demo
 VOLUME /tmp
-RUN mkdir ConfigServer
-ADD ConfigServer-0.0.1-SNAPSHOT.jar ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar
-ADD config config
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar"]
+ADD NewZealandPOC-0.0.1-SNAPSHOT.jar NewZealandPOC-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","NewZealandPOC-0.0.1-SNAPSHOT.jar "]
