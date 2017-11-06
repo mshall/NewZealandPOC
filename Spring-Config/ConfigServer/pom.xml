@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.vis</groupId>
-	<artifactId>spring-cloud-config-server</artifactId>
+	<artifactId>ConfigServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-cloud-config-server</name>
+	<name>ConfigServer</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
