@@ -34,7 +34,7 @@ pipeline {
             cd Spring-Config/deployment/docker/
             cp -r ${WORKSPACE}/Spring-Config/config/ .
             cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
-            docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc .
+            docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
             docker push deploymentcoe.vodafone.skytapdns.com/nz-poc
             docker images
@@ -111,7 +111,7 @@ pipeline {
           sh """
             cd NewZealandPOC/deployment/docker/
             cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
-            docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy .
+            docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
             docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy
             docker images
