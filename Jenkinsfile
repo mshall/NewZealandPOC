@@ -9,7 +9,7 @@ pipeline {
           sh"""
             cd Spring-Config/spring-cloud-config-server
             mvn clean install package
-            mvn deploy
+            mvn clean deploy
           """
         }
         post
@@ -88,18 +88,18 @@ pipeline {
 
 def notifyStarted(stagename) {
   // send to Slack
-  slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'nz-poc')
+  slackSend (color: '#FFFF00', message: "STARTED: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'nz-poc',token: 'JM1N6XtI0mj73fFIOfJppLAr')
 }
 
 def notifySuccessful(stagename) {
   // send to Slack
-  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'nz-poc')
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job $stagename '[${env.BUILD_NUMBER}]'", channel: 'nz-poc',token: 'JM1N6XtI0mj73fFIOfJppLAr')
  
  }
 
 def notifyFailed(stagename) {
   // send to Slack
-  slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'", channel: 'nz-poc')
+  slackSend (color: '#FF0000', message: "FAILED: Job $stagename' [${env.BUILD_NUMBER}]'", channel: 'nz-poc',token: 'JM1N6XtI0mj73fFIOfJppLAr')
 /*
  // send mail
   emailext attachLog: true, subject: "Jenkins Job ${env.JOB_NAME} $stagename [${env.BUILD_NUMBER}] failed", to: 'yara.abdellatif1@vodafone.com,manar.hassan1@vodafone.com,ahmed.said-abdallah2@vodafone.com', body: """
