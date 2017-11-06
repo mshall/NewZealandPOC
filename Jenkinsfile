@@ -33,6 +33,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
             cd Spring-Config/deployment/docker/
+            cp -r ${WORKSPACE}/Spring-Config/config ./config
             cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
             docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
