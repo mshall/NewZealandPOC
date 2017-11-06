@@ -109,7 +109,7 @@ pipeline {
         echo "docker build" 
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
-            cd NewZealandPOC
+            cd NewZealandPOC/deployment/docker/
             cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
             docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
