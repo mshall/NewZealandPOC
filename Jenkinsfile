@@ -7,7 +7,7 @@ pipeline {
           notifyStarted("Spring-Config Java Build")
           echo "java build for Spring-Config"
           sh"""
-            cd Spring-Config/spring-cloud-config-server
+            cd Spring-Config/ConfigServer
             mvn clean install package
             mvn clean deploy
           """
@@ -31,7 +31,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
             cd Spring-Config/deployment/docker/
-            cp ${WORKSPACE}/Spring-Config/spring-cloud-config-server/target/spring-cloud-config-server-0.0.1-SNAPSHOT.jar .
+            cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
             docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
             docker push deploymentcoe.vodafone.skytapdns.com/nz-poc
