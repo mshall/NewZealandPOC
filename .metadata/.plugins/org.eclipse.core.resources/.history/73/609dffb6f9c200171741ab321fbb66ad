@@ -1,5 +1,5 @@
 spring.profiles.active=aws
-spring.application.name=newzealand
+spring.application.name=newzealand-poc
 #spring.cloud.config.uri=http://47.73.58.55:40011
 spring.cloud.config.uri=http://localhost:8080
 #spring.cloud.config.uri=https://configserver-gr-test.myvdf.aws.cps.vodafone.com
