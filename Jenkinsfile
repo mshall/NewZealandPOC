@@ -23,21 +23,20 @@ pipeline {
           }
 
       }
-    /* 
+    
     stage('docker Build') {
       steps {
         notifyStarted("Docker Build")
         echo "docker build" 
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
-            cd deploy/docker/
-            cp ${WORKSPACE}/target/account-1.0-SNAPSHOT.war .
-            cp /tmp/jetty-runner-9.4.7.v20170914.jar .
-            docker build -t deploymentcoe.vodafone.skytapdns.com/cicd-demo2 .
+            cd Spring-Config/deployment/docker/
+            cp ${WORKSPACE}/target/ConfigServer-0.0.1-SNAPSHOT.jar .
+            docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
-            docker push deploymentcoe.vodafone.skytapdns.com/cicd-demo2
+            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc
             docker images
-            docker rmi deploymentcoe.vodafone.skytapdns.com/cicd-demo2
+            docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc
           """
         }
             
@@ -52,7 +51,7 @@ pipeline {
              }
         }  
     }
-
+    /*
       stage('Deployment') {
         steps {
           
