@@ -8,4 +8,6 @@ EXPOSE 8080
 USER demo
 VOLUME /tmp
 ADD NewZealandPOC-0.0.1-SNAPSHOT.jar NewZealandPOC-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","NewZealandPOC-0.0.1-SNAPSHOT.jar "]
+RUN ls 
+RUN pwd
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","NewZealandPOC-0.0.1-SNAPSHOT.jar"]
