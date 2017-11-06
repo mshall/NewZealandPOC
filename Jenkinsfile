@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-      
+      /*
       stage('Spring-Config Java Build') {
         steps {
           notifyStarted("Spring-Config Java Build")
@@ -78,7 +78,7 @@ pipeline {
       
       }
     
-
+    */
     //Newzealand POC 
     stage('Newzealand POC Java Build') {
         steps {
@@ -110,7 +110,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
             cd NewZealandPOC
-            cp ${WORKSPACE}/NewZealandPOC/target/ConfigServer-0.0.1-SNAPSHOT.jar .
+            cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
             docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
             docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy
