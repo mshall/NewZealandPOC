@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-      
+      /*
       stage('Spring-Config Java Build') {
         steps {
           notifyStarted("Spring-Config Java Build")
@@ -15,10 +15,10 @@ pipeline {
         post
         {
         success{
-          notifySuccessful("Java Build")
+          notifySuccessful("Spring-Config Java Build")
           }
             failure{
-              notifyFailed("Java Build")
+              notifyFailed("Spring-Config Java Build")
                }
                
           }
@@ -46,10 +46,10 @@ pipeline {
       post
       {
       success{
-        notifySuccessful("Docker Build")
+        notifySuccessful("Spring-Config Docker Build")
         }
           failure{
-            notifyFailed("Docker Build")
+            notifyFailed("Spring-Config Docker Build")
              }
         }  
     }
@@ -69,17 +69,94 @@ pipeline {
         post
         {
           success{
-            notifySuccessful("Kubernetes Deployment")
+            notifySuccessful("Spring-Config Kubernetes Deployment")
           }
           failure{
-            notifyFailed("Kubernetes Deployment")
+            notifyFailed("Spring-Config Kubernetes Deployment")
              }
         }
       
       }
+    
+    */
+    //Newzealand POC 
+    stage('Newzealand POC Java Build') {
+        steps {
+          notifyStarted("Newzealand POC Java Build")
+          echo "java build for Newzealand POC "
+          sh"""
+            cd NewZealandPOC
+            mvn clean install package
+            mvn clean deploy
+          """
+        }
+        post
+        {
+        success{
+          notifySuccessful("Java Build")
+          }
+            failure{
+              notifyFailed("Java Build")
+               }
+               
+          }
+
+      }
+    
+    stage('NewZealandPOC docker Build') {
+      steps {
+        notifyStarted("NewZealandPOC Docker Build")
+        echo "docker build" 
+        withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          sh """
+            cd NewZealandPOC/deployment/docker/
+            cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
+            docker build -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy .
+            docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
+            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy
+            docker images
+            docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy
+          """
+        }
+            
+      }
+      post
+      {
+      success{
+        notifySuccessful("NewZealand POC Docker Build")
+        }
+          failure{
+            notifyFailed("NewZealand POC Docker Build")
+             }
+        }  
     }
+    
+      stage('NewZealand POC Deployment') {
+        steps {
+          
+          echo "Deployment" 
+          notifyStarted("NewZealand POC Kubernetes Deployment")
+          sh """
+            cd NewZealandPOC/deployment
+            #kubectl delete -f manifests
+            kubectl create -f manifests
+            
+           """  
+        }
 
+        post
+        {
+          success{
+            notifySuccessful("NewZealand POC Kubernetes Deployment")
+          }
+          failure{
+            notifyFailed("NewZealand POC Kubernetes Deployment")
+             }
+        }
+      
+      }
 
+    }
 }
 
 
