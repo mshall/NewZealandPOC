@@ -4,10 +4,10 @@ RUN apk add --update curl && rm -rf /var/cache/apk/*
 RUN adduser -D demo
 RUN chown demo:root -R /usr/lib/jvm/java-1.8-openjdk/ 
 WORKDIR /home/demo
-EXPOSE 9090
-USER demo	
+EXPOSE 8080
+USER demo
 VOLUME /tmp
-RUN mkdir /ConfigServer
-ADD ConfigServer-0.0.1-SNAPSHOT.jar /ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar
+RUN mkdir ConfigServer
+ADD ConfigServer-0.0.1-SNAPSHOT.jar ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar
 ADD config config
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","/ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar"]

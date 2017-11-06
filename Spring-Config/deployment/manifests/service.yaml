@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cicd-demo2-svc
+  name: nz-poc-svc
   namespace: cicd-test
 spec:
   type: NodePort
   selector:
-    app: cicd-demo2
+        app: nz-poc-deploy
+        env: nz-po
   ports:
-  - name: cicd-demo2-port
-    port: 7071
-    targetPort: 9090
-  externalIPs:
-    - 10.0.0.6
+  - name: nz-poc-port
+    port: 9090
+    targetPort: 8080
