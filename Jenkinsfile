@@ -5,7 +5,6 @@ pipeline {
       stage('Spring-Config Java Build') {
         steps {
           notifyStarted("Spring-Config Java Build")
-          /*
           echo "java build for Spring-Config"
           sh"""
             cd Spring-Config/ConfigServer
@@ -21,7 +20,7 @@ pipeline {
             failure{
               notifyFailed("Java Build")
                }
-               */
+               
           }
 
       }
@@ -54,16 +53,15 @@ pipeline {
              }
         }  
     }
-    /*
-      stage('Deployment') {
+      stage('Spring-Config Deployment') {
         steps {
           
           echo "Deployment" 
-          notifyStarted("Kubernetes Deployment")
+          notifyStarted("Spring-Config Kubernetes Deployment")
           sh """
-            
-            kubectl delete -f deploy/manifests
-            kubectl create -f deploy/manifests
+            cd Spring-Config/deployment
+            #kubectl delete -f manifests
+            kubectl create -f manifests
             
            """  
         }
@@ -79,7 +77,6 @@ pipeline {
         }
       
       }
-      */
     }
 
 

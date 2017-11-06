@@ -4,7 +4,7 @@ RUN apk add --update curl && rm -rf /var/cache/apk/*
 RUN adduser -D demo
 RUN chown demo:root -R /usr/lib/jvm/java-1.8-openjdk/ 
 WORKDIR /home/demo
-EXPOSE 9090
+EXPOSE 8080
 USER demo
 VOLUME /tmp
 RUN mkdir ConfigServer
