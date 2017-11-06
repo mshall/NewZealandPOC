@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-      /*
+      
       stage('Spring-Config Java Build') {
         steps {
           notifyStarted("Spring-Config Java Build")
@@ -78,7 +78,7 @@ pipeline {
       
       }
     
-    */
+    
     //Newzealand POC 
     stage('Newzealand POC Java Build') {
         steps {
