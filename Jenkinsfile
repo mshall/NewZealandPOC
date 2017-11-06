@@ -2,9 +2,9 @@ pipeline {
     agent any
     stages {
       
-      stage('Java Build') {
+      stage('Spring-Config Java Build') {
         steps {
-          notifyStarted("Java Build")
+          notifyStarted("Spring-Config Java Build")
           echo "java build for Spring-Config"
           sh"""
             cd Spring-Config/spring-cloud-config-server
@@ -24,9 +24,9 @@ pipeline {
 
       }
     
-    stage('docker Build') {
+    stage('Spring-Config docker Build') {
       steps {
-        notifyStarted("Docker Build")
+        notifyStarted("Spring-Config Docker Build")
         echo "docker build" 
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
