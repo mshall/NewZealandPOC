@@ -60,7 +60,7 @@ pipeline {
           notifyStarted("Spring-Config Kubernetes Deployment")
           sh """
             cd Spring-Config/deployment
-            kubectl delete -f manifests
+            #kubectl delete -f manifests
             kubectl create -f manifests
             
            """  

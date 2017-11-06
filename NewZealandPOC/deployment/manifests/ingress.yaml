@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nz-poc-ingress
+  name: nz-poc-server-ingress
   namespace: cicd-test
   annotations:
     kubernetes.io/ingress.class: "nginx"
@@ -12,7 +12,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: nz-poc-svc
+          serviceName: nz-poc-server-svc
           servicePort: 9090
-        path: /nz-poc/*
-        
+        path: /nz-poc-server/*
