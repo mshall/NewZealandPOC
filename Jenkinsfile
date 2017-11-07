@@ -86,13 +86,13 @@ pipeline {
         steps {
           notifyStarted("Newzealand POC Java Build")
           echo "java build for Newzealand POC "
-          /*
+          
           sh"""
             cd NewZealandPOC
             mvn clean install package
             mvn clean deploy
           """
-          */
+          
         }
         post
         {
