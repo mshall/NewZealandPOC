@@ -6,11 +6,13 @@ pipeline {
         steps {
           notifyStarted("Spring-Config Java Build")
           echo "java build for Spring-Config"
+          /*
           sh"""
             cd Spring-Config/ConfigServer
             mvn clean install package
             mvn clean deploy
           """
+          */
         }
         post
         {
@@ -34,9 +36,11 @@ pipeline {
             cd Spring-Config/deployment/docker/
             cp -r ${WORKSPACE}/Spring-Config/config/ .
             cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
+            ls 
+            ls config
             docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc:v1 .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
-            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
+            #docker push deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
             docker images
             docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
           """
@@ -59,12 +63,14 @@ pipeline {
           
           echo "Deployment" 
           notifyStarted("Spring-Config Kubernetes Deployment")
+          /*
           sh """
             cd Spring-Config/deployment
             kubectl delete -f manifests
             kubectl create -f manifests
             
-           """  
+           """
+           */  
         }
 
         post
