@@ -2,7 +2,7 @@
 <!-- configuration file for LogBack (slf4J implementation) See here for more 
 	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
 <configuration scan="true" scanPeriod="30 seconds">
-	<property name="LOG_HOME" value="/log"></property>
+	<property name="LOG_HOME" value="/var/SP/log"></property>
 	<!-- <property file="../logging.properties" /> -->
 	<!-- <property file="logging.properties" /> -->
 
@@ -20,21 +20,21 @@
 	</appender>
 
 
-	<!-- <appender name="FILE"
+	 <appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/Config-server.log</file>
+		<file>${LOG_HOME}/poc.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			daily rollover
-			<fileNamePattern>${LOG_HOME}/Config-server.%d{yyyy-MM-dd}.log
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_HOME}/poc.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
-			keep 30 days' worth of history
+			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 
 		<encoder>
 			<pattern>${PID}: %-5level %logger{0} - %msg%n</pattern>
 		</encoder>
-	</appender> -->
+	</appender>
 
 
 
@@ -49,6 +49,6 @@
 		<level value="DEBUG" />
 	</logger>
 	<root level="${LOG_LEVEL}">
-		<appender-ref ref="console" />
+		<appender-ref ref="FILE" />
 	</root>
 </configuration>

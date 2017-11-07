@@ -20,21 +20,21 @@
 	</appender>
 
 
-	<!-- <appender name="FILE"
+	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${LOG_HOME}/Config-server.log</file>
+		<file>${LOG_HOME}/poc.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			daily rollover
-			<fileNamePattern>${LOG_HOME}/Config-server.%d{yyyy-MM-dd}.log
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_HOME}/poc.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
-			keep 30 days' worth of history
+			<!-- keep 30 days' worth of history -->
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 
 		<encoder>
 			<pattern>${PID}: %-5level %logger{0} - %msg%n</pattern>
 		</encoder>
-	</appender> -->
+	</appender>
 
 
 
@@ -48,7 +48,8 @@
 	<logger name="org.springframework.ws.server.MessageTracing">
 		<level value="DEBUG" />
 	</logger>
-	<root level="${LOG_LEVEL}">
+	<root level="info">
 		<appender-ref ref="console" />
+		<appender-ref ref="FILE" />
 	</root>
 </configuration>
