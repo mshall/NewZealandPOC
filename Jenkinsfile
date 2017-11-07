@@ -40,7 +40,7 @@ pipeline {
             cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
             docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc:v1 .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
-            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
+            #docker push deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
             #docker images
             docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc:v1
           """
