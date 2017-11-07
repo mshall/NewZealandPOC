@@ -34,6 +34,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
             cd Spring-Config/deployment/docker/
+            rm -rf config
             cp -r ${WORKSPACE}/Spring-Config/config/ .
             cp ${WORKSPACE}/Spring-Config/ConfigServer/target/ConfigServer-0.0.1-SNAPSHOT.jar .
             ls 
