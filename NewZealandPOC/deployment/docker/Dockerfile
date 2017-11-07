@@ -4,5 +4,5 @@ RUN apk add --update curl && rm -rf /var/cache/apk/*
 CMD ["/bin/sh"]
 EXPOSE 8080
 VOLUME /tmp
-ADD NewZealandPOC-0.0.1-SNAPSHOT.jar NewZealandPOC-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","NewZealandPOC-0.0.1-SNAPSHOT.jar"]
+ADD NewZealandPOC-0.0.1-SNAPSHOT.jar /NewZealandPOC-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","/NewZealandPOC-0.0.1-SNAPSHOT.jar"]
