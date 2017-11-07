@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nz-poc-server
-        image: deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v1
+        image: deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2
         imagePullPolicy: Always
         ports:
          - containerPort: 8080
