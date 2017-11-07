@@ -19,6 +19,6 @@ spec:
         image: deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2
         imagePullPolicy: Always
         ports:
-         - containerPort: 8081
+         - containerPort: 8080
       imagePullSecrets:
       - name: demo-sec
