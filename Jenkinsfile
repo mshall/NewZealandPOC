@@ -1,8 +1,9 @@
 pipeline {
     agent any
     stages {
-      
+      /*
       stage('Spring-Config Java Build') {
+
         steps {
           notifyStarted("Spring-Config Java Build")
           echo "java build for Spring-Config"
@@ -79,17 +80,19 @@ pipeline {
       
       }
     
-    
+    */
     //Newzealand POC 
     stage('Newzealand POC Java Build') {
         steps {
           notifyStarted("Newzealand POC Java Build")
           echo "java build for Newzealand POC "
+          /*
           sh"""
             cd NewZealandPOC
             mvn clean install package
             mvn clean deploy
           """
+          */
         }
         post
         {
@@ -112,6 +115,7 @@ pipeline {
           sh """
             cd NewZealandPOC/deployment/docker/
             cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
+            cp ${WORKSPACE}/CICD-Demo/demo/target/employees-app-1.0-SNAPSHOT-jar-with-dependencies.jar .
             docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2 .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
             docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2
