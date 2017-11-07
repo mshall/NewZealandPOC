@@ -53,6 +53,7 @@ pipeline {
              }
         }  
     }
+
       stage('Spring-Config Deployment') {
         steps {
           
@@ -84,11 +85,13 @@ pipeline {
         steps {
           notifyStarted("Newzealand POC Java Build")
           echo "java build for Newzealand POC "
+          /*
           sh"""
             cd NewZealandPOC
             mvn clean install package
             mvn clean deploy
           """
+          */
         }
         post
         {
@@ -107,6 +110,7 @@ pipeline {
       steps {
         notifyStarted("NewZealandPOC Docker Build")
         echo "docker build" 
+        /*
         withCredentials([usernamePassword(credentialsId: '98a29d6f-4f30-485a-a758-475b5fe03274', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
             cd NewZealandPOC/deployment/docker/
@@ -118,6 +122,7 @@ pipeline {
             docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v1
           """
         }
+        */
             
       }
       post
@@ -135,13 +140,15 @@ pipeline {
         steps {
           
           echo "Deployment" 
+          /*
           notifyStarted("NewZealand POC Kubernetes Deployment")
           sh """
             cd NewZealandPOC/deployment
             kubectl delete -f manifests
             kubectl create -f manifests
             
-           """  
+           """
+           */  
         }
 
         post
