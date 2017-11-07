@@ -139,7 +139,7 @@ pipeline {
           notifyStarted("NewZealand POC Kubernetes Deployment")
           sh """
             cd NewZealandPOC/deployment
-            #kubectl delete -f manifests
+            kubectl delete -f manifests
             kubectl create -f manifests
             
            """
