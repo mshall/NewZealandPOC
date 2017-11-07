@@ -6,4 +6,5 @@ VOLUME /tmp
 EXPOSE 8080
 ADD NewZealandPOC-0.0.1-SNAPSHOT.jar /NewZealandPOC-0.0.1-SNAPSHOT.jar
 RUN sh -c 'touch /NewZealandPOC-0.0.1-SNAPSHOT.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","/NewZealandPOC-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","/NewZealandPOC-0.0.1-SNAPSHOT.jar"]
+CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
