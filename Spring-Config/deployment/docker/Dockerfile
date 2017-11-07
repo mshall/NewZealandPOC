@@ -10,5 +10,7 @@ VOLUME /tmp
 RUN mkdir ConfigServer
 ADD ConfigServer-0.0.1-SNAPSHOT.jar ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar
 ADD config ConfigServer/config
+#USER root
+RUN chown demo:demo ConfigServer/config
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Xmx512M","-jar","ConfigServer/ConfigServer-0.0.1-SNAPSHOT.jar"]
