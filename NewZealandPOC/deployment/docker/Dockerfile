@@ -3,7 +3,7 @@ HEALTHCHECK --interval=5s --timeout=10s --retries=2 CMD if [ `curl -w "%{http_co
 RUN apk add --update curl && rm -rf /var/cache/apk/*
 CMD ["/bin/sh"]
 VOLUME /tmp
-EXPOSE 8080
+EXPOSE 8081
 ADD NewZealandPOC-0.0.1-SNAPSHOT.jar /NewZealandPOC-0.0.1-SNAPSHOT.jar
 ADD employees-app-1.0-SNAPSHOT-jar-with-dependencies.jar /test.jar
 RUN sh -c 'touch /NewZealandPOC-0.0.1-SNAPSHOT.jar'
