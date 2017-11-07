@@ -112,11 +112,11 @@ pipeline {
           sh """
             cd NewZealandPOC/deployment/docker/
             cp ${WORKSPACE}/NewZealandPOC/target/NewZealandPOC-0.0.1-SNAPSHOT.jar .
-            docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v1 .
+            docker build --no-cache -t deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2 .
             docker login --username $USERNAME --password $PASSWORD https://deploymentcoe.vodafone.skytapdns.com
-            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v1
+            docker push deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2
             docker images
-            docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v1
+            docker rmi deploymentcoe.vodafone.skytapdns.com/nz-poc-server-deploy:v2
           """
         }
 
@@ -139,7 +139,7 @@ pipeline {
           notifyStarted("NewZealand POC Kubernetes Deployment")
           sh """
             cd NewZealandPOC/deployment
-            #kubectl delete -f manifests
+            kubectl delete -f manifests
             kubectl create -f manifests
             
            """
