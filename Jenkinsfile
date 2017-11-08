@@ -3,7 +3,6 @@ pipeline {
     stages {
       
       stage('Spring-Config Java Build') {
-
         steps {
           notifyStarted("Spring-Config Java Build")
           echo "java build for Spring-Config"
