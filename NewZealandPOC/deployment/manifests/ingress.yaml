@@ -14,4 +14,4 @@ spec:
       - backend:
           serviceName: nz-poc-server-svc
           servicePort: 9099
-        path: /nz/*
+        path: /nz-server/*
